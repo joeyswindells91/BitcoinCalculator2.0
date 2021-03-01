@@ -40,7 +40,12 @@ var massPopChart = new Chart(myChart, {
       hoverBorderColor: "black"
     }]
   },
-  options: {}
+  options:{
+    title:{
+      display:true,
+      text:"Largest Cities In Massachusetts"
+    }
+  }
 });
 
 
