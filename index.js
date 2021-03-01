@@ -12,6 +12,37 @@ var futuretotal = 0;
 var futurevaluesarray = [];
 var bitcoinprice = 0;
 
+var myChart = $("#myChart")[0].getContext("2d");
+var massPopChart = new Chart(myChart, {
+  type:'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+  data: {
+    labels:["2022", "2023", "2024", "2025", "2026", "2027"],
+    datasets: [{
+      label: 'Future Value',
+      data: [
+        617594,
+        181045,
+        106519,
+        105162,
+        95072
+      ],
+      // backgroundColor: "green"
+      backgroundColor: [
+        "green",
+        "blue",
+        "red",
+        "yellow",
+        "orange"
+      ],
+      borderWidth:1,
+      borderColor:"gray",
+      hoverBorderWidth: 3,
+      hoverBorderColor: "black"
+    }]
+  },
+  options: {}
+});
+
 
 // ******************** bitcoin price update ************************ //
 
