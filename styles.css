@@ -1,0 +1,29 @@
+div {
+  text-align: center;
+}
+
+
+.title {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+
+#btcPrice {
+  margin-top: 2%;
+  display: inline-block;
+}
+
+
+.display-3 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/*
+.top {
+  background-color: #f7931a;
+}
+
+.bottom {
+  background-color: #f7931a;
+} */
