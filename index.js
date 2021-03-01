@@ -14,7 +14,7 @@ var bitcoinprice = 0;
 
 var myChart = $("#myChart")[0].getContext("2d");
 var massPopChart = new Chart(myChart, {
-  type:'line',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+  type:'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
   data: {
     labels:["2022", "2023", "2024", "2025", "2026", "2027"],
     datasets: [{
