@@ -14,28 +14,25 @@ var bitcoinprice = 0;
 
 var myChart = $("#myChart")[0].getContext("2d");
 var massPopChart = new Chart(myChart, {
-  type:'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+  type:'line',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
   data: {
     labels:["2022", "2023", "2024", "2025", "2026", "2027"],
     datasets: [{
       label: 'Future Value',
       data: [
-        617594,
-        181045,
-        106519,
-        105162,
-        95072
+        0,
+        250000,
+        400000,
+        800000,
+        1200000,
+        2000000
       ],
       // backgroundColor: "green"
       backgroundColor: [
-        "green",
-        "blue",
-        "red",
-        "yellow",
-        "orange"
+        "blue"
       ],
       borderWidth:1,
-      borderColor:"gray",
+      borderColor:"blue",
       hoverBorderWidth: 3,
       hoverBorderColor: "black"
     }]
@@ -43,7 +40,7 @@ var massPopChart = new Chart(myChart, {
   options:{
     title:{
       display:true,
-      text:"Largest Cities In Massachusetts"
+      text:"Year By Year Future Value"
     }
   }
 });
