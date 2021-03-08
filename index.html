@@ -8,15 +8,15 @@
   <!-- boostrap css link-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="icon" href="images/bitcoinicon.png" type="images/png">
-  <link href="dist/css/fs-modal.min.css" rel="stylesheet">
+  <!-- <link href="dist/css/fs-modal.min.css" rel="stylesheet"> -->
   <!-- font links-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <!-- Stylesheet -->
-<link href="bootstrap.min.css" rel="stylesheet">
-<link href="fs-modal.min.css" rel="stylesheet">
+<!-- <link href="bootstrap.min.css" rel="stylesheet">
+<link href="fs-modal.min.css" rel="stylesheet"> -->
 
 <!-- ChartJS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
@@ -50,15 +50,17 @@
         <p>Select applicable asset classes below and input information</p>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col">
         <button class="btn btn-primary mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Bitcoin</button>
         <div class="col">
           <div class="collapse multi-collapse show" id="multiCollapseExample1">
             <div class="card card-body">
-              <h4>Current Market Value <input type="text" class="w-25"></h4>
-              <h4>Monthly Contribution <input type="text" class="w-25"></h4>
-              <h4>Expected Annual Return <input type="text" class="w-25"></h4>
+              <h4>Current Market Value <input type="number" class="current w-25"></h4>
+              <h4>Monthly Contribution <input type="number" class="monthly-contribution w-25"></h4>
+              <h4>Expected Annual Return <input type="number" class="interest w-25"></h4>
               <button class="btn btn-primary" id="help" type="button">Help Calculating Expected Return</button>
             </div>
           </div>
@@ -73,9 +75,9 @@
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample2">
             <div class="card card-body">
-              <h4>Current Market Value <input type="text" class="w-25"></h4>
-              <h4>Monthly Contribution <input type="text" class="w-25"></h4>
-              <h4>Expected Annual Return <input type="text" class="w-25"></h4>
+              <h4>Current Market Value <input type="number" class="current w-25"></h4>
+              <h4>Monthly Contribution <input type="number" class="monthly-contribution w-25"></h4>
+              <h4>Expected Annual Return <input type="number" class="interest w-25"></h4>
             </div>
           </div>
         </div>
@@ -88,9 +90,9 @@
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample3">
             <div class="card card-body">
-              <h4>Current Market Value <input type="text" class="w-25"></h4>
-              <h4>Monthly Contribution <input type="text" class="w-25"></h4>
-              <h4>Expected Annual Return <input type="text" class="w-25"></h4>
+              <h4>Current Market Value <input type="number" class="current w-25"></h4>
+              <h4>Monthly Contribution <input type="number" class="monthly-contribution w-25"></h4>
+              <h4>Expected Annual Return <input type="number" class="interest w-25"></h4>
             </div>
           </div>
         </div>
@@ -103,25 +105,32 @@
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample4">
             <div class="card card-body">
-              <h4>Current Market Value <input type="text" class="w-25"></h4>
-              <h4>Monthly Contribution <input type="text" class="w-25"></h4>
-              <h4>Expected Annual Return <input type="text" class="w-25"></h4>
+              <h4>Current Market Value <input type="number" class="current w-25"></h4>
+              <h4>Monthly Contribution <input type="number" class="monthly-contribution w-25"></h4>
+              <h4>Expected Annual Return <input type="number" class="interest w-25"></h4>
             </div>
           </div>
         </div>
     </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row">
       <div class="col">
-        <button class="btn btn-dark">Calculate</button>
-        <button class="btn btn-light">Reset</button>
+        <label for="timeframe">Timeframe (Years)</label>
+        <input id="years" type="number">
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col">
-        <h2>In X years, you will have $X!</h2>
+        <button id="calculate" class="btn btn-dark">Calculate</button>
+        <button id="reset" class="btn btn-light">Reset</button>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col">
+        <h2>In X years, you will have: <h2 id="total-future-value"></h2></h2>
       </div>
     </div>
 
@@ -159,13 +168,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="dist/js/fs-modal.min.js"></script>
+    <!-- <script src="dist/js/fs-modal.min.js"></script> -->
 
     <!-- jquery mobile -->
 
     <!-- JavaScript -->
-    <script src="jquery.min.js"></script>
+    <!-- <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
-    <script src="fs-modal.min.js"></script>
+    <script src="fs-modal.min.js"></script> -->
 </body>
 </html>
