@@ -47,7 +47,10 @@ $("#calculate").click(function() {
     total = total + parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
   }
 
-  $("#total-future-value").html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total));
+  // $("#total-future-value").html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total));
+  var futuretotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total)
+
+  $(".result").html("In " + timeframe + " years, you will have " + futuretotal);
 
 
 

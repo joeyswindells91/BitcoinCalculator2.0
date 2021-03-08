@@ -35,3 +35,7 @@ div {
 /* #myChart {
   margin: 1% auto;
 } */
+
+.result {
+  display: inline-block;
+}
