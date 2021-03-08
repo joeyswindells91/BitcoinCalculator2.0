@@ -35,6 +35,7 @@ function compoundCalculation(principal, monthlycont, interestrate, years) {
 $("#calculate").click(function() {
 
   total = 0;
+  massPopChart.data.labels = [];
 
   for (var i = 0; i < currentValues.length; i++) {
     // total = total + isNumber(parseInt(currentValues[i].value));
@@ -52,7 +53,9 @@ $("#calculate").click(function() {
 
   $(".result").html("In " + timeframe + " years, you will have " + futuretotal);
 
-
+  for (var i = 0; i <= timeframe; i++) {
+    massPopChart.data.labels.push(i);
+  }
 
 })
 
@@ -62,7 +65,8 @@ var myChart = $("#myChart")[0].getContext("2d");
 var massPopChart = new Chart(myChart, {
   type:'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
   data: {
-    labels:["2022", "2023", "2024", "2025", "2026", "2027"],
+    labels: [],
+    // labels:["2022", "2023", "2024", "2025", "2026", "2027"],
     datasets: [{
       label: 'Future Value',
       data: [
