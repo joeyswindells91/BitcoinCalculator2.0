@@ -39,3 +39,7 @@ div {
 .result {
   display: inline-block;
 }
+
+.hidden {
+  display: none;
+}

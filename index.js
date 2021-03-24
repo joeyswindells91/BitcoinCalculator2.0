@@ -64,6 +64,14 @@ function compoundCalculation(principal, monthlycont, interestrate, years) {
 
 $("#calculate").click(function() {
 
+  if (parseFloat($("#years").val()) <= 0) {
+    alert("Hey WTF?!");
+  }
+
+  else {
+
+  $("div").removeClass("hidden");
+
   total = 0;
   massPopChart.data.labels = [];
 
@@ -110,8 +118,9 @@ $("#calculate").click(function() {
 
     }
 
+
     // push value to y axis
-    massPopChart.data.datasets[0].data.push(value);
+    massPopChart.data.datasets[0].data.push(value.toFixed(2));
 
     // reset value back to zero for next iteration
     value = 0;
@@ -119,12 +128,12 @@ $("#calculate").click(function() {
 
 
   // $("#total-future-value").html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total));
-  var futuretotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total)
+  var futuretotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total);
 
   $(".result").html("In " + timeframe + " years, you will have " + futuretotal);
 
   for (var i = 0; i <= timeframe; i++) {
-    massPopChart.data.labels.push(i);
+    massPopChart.data.labels.push(2021 + i);
 
     // massPopChart.data.datasets[0].data.push(100);
   }
@@ -133,7 +142,7 @@ $("#calculate").click(function() {
 
 
 
-
+}
 })
 
 
