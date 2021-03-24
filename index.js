@@ -6,6 +6,36 @@ var currentContributions = $(".monthly-contribution");
 var interest = $(".interest");
 var total = 0;
 
+// chart
+var myChart = $("#myChart")[0].getContext("2d");
+var massPopChart = new Chart(myChart, {
+  type:'line',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+  data: {
+    labels: [],
+    // labels:["2022", "2023", "2024", "2025", "2026", "2027"],
+    datasets: [{
+      label: 'Future Value',
+      data: [],
+      // backgroundColor: "green"
+      backgroundColor: [
+        "blue"
+      ],
+      borderWidth:1,
+      borderColor:"blue",
+      hoverBorderWidth: 3,
+      hoverBorderColor: "black"
+    }]
+  },
+  options:{
+    title:{
+      display:true,
+      text:"Year By Year Future Value"
+    }
+  }
+});
+
+//  massPopChart.data.datasets[0].data.push(100);
+
 
 // determines if input is a number or not, if not- return 0
 function isNumber(input) {
@@ -37,6 +67,13 @@ $("#calculate").click(function() {
   total = 0;
   massPopChart.data.labels = [];
 
+  massPopChart.data.datasets[0].data = [];
+
+  var time = isNumber(parseFloat($("#years").val()));
+
+  var yearzero = 0;
+
+
   for (var i = 0; i < currentValues.length; i++) {
     // total = total + isNumber(parseInt(currentValues[i].value));
     var principal = isNumber(parseFloat(currentValues[i].value));
@@ -44,9 +81,42 @@ $("#calculate").click(function() {
     var returnrate = isNumber(parseFloat(interest[i].value) * .01);
     var timeframe = isNumber(parseFloat($("#years").val()));
 
-
+    // massPopChart.data.datasets.data.push(100);
     total = total + parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
+
+    //
+
+    yearzero = yearzero + principal;
+
   }
+
+  massPopChart.data.datasets[0].data.push(yearzero);
+  // for each year
+  for (var j = 1; j <= time; j++) {
+
+  // set counter variable to zero
+    var value = 0;
+
+  // iterate through each asset class
+    for (var x = 0; x < currentValues.length; x++) {
+
+      var principal = isNumber(parseFloat(currentValues[x].value));
+      var monthlycont = isNumber(parseFloat(currentContributions[x].value));
+      var returnrate = isNumber(parseFloat(interest[x].value) * .01);
+
+      // send each asset class through compoundcalculator using the year number
+      // add the value of each asset class after jye ars to value
+      value = value + parseFloat(compoundCalculation(principal, monthlycont, returnrate, j));
+
+    }
+
+    // push value to y axis
+    massPopChart.data.datasets[0].data.push(value);
+
+    // reset value back to zero for next iteration
+    value = 0;
+  }
+
 
   // $("#total-future-value").html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total));
   var futuretotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total)
@@ -55,45 +125,16 @@ $("#calculate").click(function() {
 
   for (var i = 0; i <= timeframe; i++) {
     massPopChart.data.labels.push(i);
+
+    // massPopChart.data.datasets[0].data.push(100);
   }
+
+
+
+
+
 
 })
-
-
-// chart
-var myChart = $("#myChart")[0].getContext("2d");
-var massPopChart = new Chart(myChart, {
-  type:'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
-  data: {
-    labels: [],
-    // labels:["2022", "2023", "2024", "2025", "2026", "2027"],
-    datasets: [{
-      label: 'Future Value',
-      data: [
-        0,
-        250000,
-        400000,
-        800000,
-        1200000,
-        2000000
-      ],
-      // backgroundColor: "green"
-      backgroundColor: [
-        "blue"
-      ],
-      borderWidth:1,
-      borderColor:"blue",
-      hoverBorderWidth: 3,
-      hoverBorderColor: "black"
-    }]
-  },
-  options:{
-    title:{
-      display:true,
-      text:"Year By Year Future Value"
-    }
-  }
-});
 
 
 // ******************** bitcoin price update ************************ //
