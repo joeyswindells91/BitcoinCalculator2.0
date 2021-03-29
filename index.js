@@ -64,20 +64,22 @@ function compoundCalculation(principal, monthlycont, interestrate, years) {
 
 $("#calculate").click(function() {
 
-  if (parseFloat($("#years").val()) <= 0) {
+  $("#result-section").addClass("hidden");
+
+  if (parseFloat($("#input-years").val()) <= 0) {
     alert("Hey WTF?!");
   }
 
   else {
 
-  $("div").removeClass("hidden");
+  $("#result-section").removeClass("hidden");
 
   total = 0;
   massPopChart.data.labels = [];
 
   massPopChart.data.datasets[0].data = [];
 
-  var time = isNumber(parseFloat($("#years").val()));
+  var time = isNumber(parseFloat($("#input-years").val()));
 
   var yearzero = 0;
 
@@ -87,7 +89,7 @@ $("#calculate").click(function() {
     var principal = isNumber(parseFloat(currentValues[i].value));
     var monthlycont = isNumber(parseFloat(currentContributions[i].value));
     var returnrate = isNumber(parseFloat(interest[i].value) * .01);
-    var timeframe = isNumber(parseFloat($("#years").val()));
+    var timeframe = isNumber(parseFloat($("#input-years").val()));
 
     // massPopChart.data.datasets.data.push(100);
     total = total + parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
@@ -184,3 +186,72 @@ myFunction();
 
 // ************************************************************************ //
 
+// ************************************************************************ //
+
+// $("#help-box").slideUp();
+
+$("#bitcoin-help").click(function () {
+
+  //  $("#help-box").css("display", "block");
+   $("#interest-current-price").val(bitcoinprice.toFixed(2));
+
+   });
+
+
+  //  $("#interest-copy").click(function() {
+  //   $("#help-box").css("display", "none");
+  //  });
+
+   $("#close").click(function() {
+    $("#help-box").css("display", "none");
+   });
+
+
+  $(".current").attr("value", "0");
+  $(".monthly-contribution").attr("value", "0");
+  $(".interest").attr("value", "0");
+
+
+
+  function calcInterestRate(currentprice, futureprice, years) {
+
+    var result = (12 * (Math.pow((futureprice/currentprice), (1/(12 * years))) -1)) * 100;
+
+
+    return result.toFixed(3);
+
+  };
+
+  // // interest rate help page//
+
+
+var bitcoinrate = 0;
+var inputyears = 0;
+
+$("#interest-calculate").click(function() {
+
+  var current = parseFloat($("#interest-current-price").val());
+  var future =  parseFloat($("#interest-future-price").val());
+  var years = (parseFloat($("#interest-year").val())) - 2021;
+
+  var result = calcInterestRate(current, future, years);
+  bitcoinrate = result;
+  inputyears = years
+
+
+  $("#final-result").html("The average annual return is " + result + "% over " + years + " year(s)");
+
+
+
+});
+
+$("#interest-copy").click(function() {
+  $("#bitcoin-expected-interest").val(bitcoinrate);
+
+})
+
+$("#years-copy").click(function() {
+  $("#input-years").val(inputyears);
+})
+
+bitcoinrate = 0;

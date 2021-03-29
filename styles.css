@@ -43,3 +43,8 @@ div {
 .hidden {
   display: none;
 }
+
+#bitcoin-help {
+  width: 10rem;
+  margin: 2% auto;
+}
