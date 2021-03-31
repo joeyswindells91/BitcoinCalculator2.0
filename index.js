@@ -66,9 +66,22 @@ $("#calculate").click(function() {
 
   $("#result-section").addClass("hidden");
 
-  if (parseFloat($("#input-years").val()) <= 0) {
-    alert("Hey WTF?!");
+  // for (var i = 0; i < currentValues.length; i++) {
+  //   if (currentValues[i].value < 0) {
+  //     alert("Make sure all current values are greater than or equal to 0");
+  //   }
+  // }
+
+  for (var i = 0; i < $("input").length; i++) {
+    if ($("input")[i].value < 0 ) {
+      alert("Make sure all input values are greater than or equal to 0");
+    }
   }
+
+  if (parseFloat($("#input-years").val()) <= 0) {
+    alert("Please input a timeframe value greater than 0.");
+  }
+
 
   else {
 
@@ -139,9 +152,6 @@ $("#calculate").click(function() {
 
     // massPopChart.data.datasets[0].data.push(100);
   }
-
-
-
 
 
 }
@@ -255,3 +265,7 @@ $("#years-copy").click(function() {
 })
 
 bitcoinrate = 0;
+
+$(".reset").click(function() {
+  $("input").val(0);
+});
