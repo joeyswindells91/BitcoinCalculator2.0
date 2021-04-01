@@ -153,7 +153,7 @@ $("#calculate").click(function() {
   // $("#total-future-value").html(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total));
   var futuretotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total);
 
-  $(".result").html("In " + timeframe + " years, you will have " + futuretotal);
+  $(".result").html("In " + timeframe + " years, you will have " + futuretotal + "!");
 
   $("#bitcoin-price").html("Bitcoin price : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinPrice));
 
