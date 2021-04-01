@@ -5,6 +5,8 @@ var currentValues = $(".current");
 var currentContributions = $(".monthly-contribution");
 var interest = $(".interest");
 var total = 0;
+var currentBitcoinPrice = 0;
+var futureBitcoinPrice = 0;
 
 // chart
 var myChart = $("#myChart")[0].getContext("2d");
@@ -109,6 +111,10 @@ $("#calculate").click(function() {
     // massPopChart.data.datasets.data.push(100);
     total = total + parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
 
+    if (i === 0) {
+      futureBitcoinPrice = parseFloat(compoundCalculation(currentBitcoinPrice, 0, returnrate, timeframe));
+    }
+
     //
 
     yearzero = yearzero + principal;
@@ -149,6 +155,8 @@ $("#calculate").click(function() {
 
   $(".result").html("In " + timeframe + " years, you will have " + futuretotal);
 
+  $("#bitcoin-price").html("Bitcoin price : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinPrice));
+
   for (var i = 0; i <= timeframe; i++) {
     massPopChart.data.labels.push(2021 + i);
 
@@ -181,6 +189,8 @@ function myFunction() {
         symbol = data.bpi[currSymbol].code;
         desc = data.bpi.USD.description;
         btcPriceDisplay.innerText = "1 Bitcoin = $" + price;
+
+        currentBitcoinPrice = isNumber(parseFloat(bitcoinprice));
 
         // currncySymbol.innerText =  currSymbol;
         // currencyDesc.innerText = desc;
