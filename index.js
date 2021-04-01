@@ -66,17 +66,19 @@ $("#calculate").click(function() {
 
   $("#result-section").addClass("hidden");
 
-  // for (var i = 0; i < currentValues.length; i++) {
-  //   if (currentValues[i].value < 0) {
-  //     alert("Make sure all current values are greater than or equal to 0");
-  //   }
-  // }
-
-  for (var i = 0; i < $("input").length; i++) {
-    if ($("input")[i].value < 0 ) {
-      alert("Make sure all input values are greater than or equal to 0");
+  for (var i = 0; i < currentValues.length; i++) {
+    if (currentValues[i].value < 0) {
+      alert("Make sure all current values are at least 0");
     }
   }
+
+  for (var i = 0; i < currentContributions.length; i++) {
+    if (currentContributions[i].value < 0) {
+      alert("Make sure all monthly contribution values are at least 0");
+    }
+  }
+
+
 
   if (parseFloat($("#input-years").val()) <= 0) {
     alert("Please input a timeframe value greater than 0.");
@@ -227,6 +229,9 @@ $("#bitcoin-help").click(function () {
 
     var result = (12 * (Math.pow((futureprice/currentprice), (1/(12 * years))) -1)) * 100;
 
+    if (isNaN(result)) {
+      return 0;
+    }
 
     return result.toFixed(3);
 
@@ -240,6 +245,12 @@ var inputyears = 0;
 
 $("#interest-calculate").click(function() {
 
+  if ($("#interest-year").val() < 2022) {
+    alert("Input a year greater than 2021");
+  }
+
+  else {
+
   var current = parseFloat($("#interest-current-price").val());
   var future =  parseFloat($("#interest-future-price").val());
   var years = (parseFloat($("#interest-year").val())) - 2021;
@@ -251,7 +262,7 @@ $("#interest-calculate").click(function() {
 
   $("#final-result").html("The average annual return is " + result + "% over " + years + " year(s)");
 
-
+  };
 
 });
 

@@ -38,6 +38,30 @@
     </div>
   </div>
 
+  <div>
+    <a type="button" id="how-to-use" class="btn btn-sm btn-primary text-light text-center mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      How to use this calculator
+    </a>
+  </div>
+
+    <!--How to use calculator Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">How to use this calculator</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>THIS IS HOW YOU USE IT</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -49,7 +73,7 @@
       <div class="modal-body">
               <p>Bitcoin Current Price ($): <input type="number" id="interest-current-price"></p>
               <p> Bitcoin Future Price Prediction ($): <input type="number" id="interest-future-price" class="mt-2"></p>
-              <p>Year Of Future Price <input type="number" id="interest-year" min="2022" placeholder="2022" class="mt-2"></p>
+              <p>Year Of Future Price <input type="number" id="interest-year" min="2022" value="2022" class="mt-2"></p>
               <button id="interest-calculate" class="btn btn-primary text-light mt-2">Calculate Annual Return</button>
               <p id="final-result" class="mt-2"></p>
               <button id="interest-copy" class="btn btn-primary text-light mt-2 copy">Copy Return Rate to Calculator</button>
@@ -71,11 +95,6 @@
         <h3>Total Monthly Contributions <h3>$0.00</h3></h3>
       </div>
     </div> -->
-    <div class="row">
-      <div class="col">
-        <p>Select applicable asset classes below and input information</p>
-      </div>
-    </div>
 
 
     <div class="row">
@@ -160,6 +179,18 @@
     <div class="col">
       <h2 class="result"></h2>
       <!-- <span><h2 class="result">In X years, you will have: <h2 id="total-future-value"></h2></h2></span> -->
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <h2 class="principal"></h2>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <h2 class="principal"></h2>
     </div>
   </div>
 
