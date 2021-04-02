@@ -49,9 +49,9 @@ div {
 }
 
 #bitcoin-rocket {
-  width: 20%;
   margin: auto;
   border-color: black;
+  width: 20rem;
 }
 
 .bitcoinFont {
