@@ -63,6 +63,16 @@ function compoundCalculation(principal, monthlycont, interestrate, years) {
 
 };
 
+function ConvertToNumber(numberString) {
+
+  var result = Number(numberString.replace(/[^0-9.-]+/g,""));
+
+  return result;
+}
+
+
+// var currency = "-$4,400.50";
+// var number = Number(currency.replace(/[^0-9.-]+/g,""));
 
 $("#calculate").click(function() {
 
@@ -103,8 +113,8 @@ $("#calculate").click(function() {
 
   for (var i = 0; i < currentValues.length; i++) {
     // total = total + isNumber(parseInt(currentValues[i].value));
-    var principal = isNumber(parseFloat(currentValues[i].value));
-    var monthlycont = isNumber(parseFloat(currentContributions[i].value));
+    var principal = isNumber(parseFloat(ConvertToNumber(currentValues[i].value)));
+    var monthlycont = isNumber(parseFloat(ConvertToNumber(currentContributions[i].value)));
     var returnrate = isNumber(parseFloat(interest[i].value) * .01);
     var timeframe = isNumber(parseFloat($("#input-years").val()));
 
@@ -235,8 +245,8 @@ $("#bitcoin-help").click(function () {
    });
 
 
-  $(".current").attr("value", "0");
-  $(".monthly-contribution").attr("value", "0");
+  // $(".current").attr("value", "0");
+  // $(".monthly-contribution").attr("value", "0");
   $(".interest").attr("value", "0");
 
 
