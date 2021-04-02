@@ -400,3 +400,10 @@ input[0].setSelectionRange(caret_pos, caret_pos);
 }
 
 // ********************************************************
+
+
+// THINGS TO ADD
+
+// ADD IN BITCOIN JOKES WHEN USERS CLICK ON EQUITIES/BONDS/CASH/SHITCOINS
+// ADD IN ABILITY TO TYPE IN AMOUNT OF BITCOIN OWNED
+// *******************

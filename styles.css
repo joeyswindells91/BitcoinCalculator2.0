@@ -57,3 +57,8 @@ div {
 .bitcoinFont {
   font-family: 'Ubuntu', sans-serif;
 }
+
+
+.current {
+  width: 40rem;
+}
