@@ -14,11 +14,6 @@ div {
   display: inline-block;
 }
 
-
-.display-3 {
-  font-family: 'Ubuntu', sans-serif;
-}
-
 /*
 .top {
   background-color: #f7931a;
@@ -51,4 +46,14 @@ div {
 
 .reset {
   margin-left: 2%;
+}
+
+#bitcoin-rocket {
+  width: 20%;
+  margin: auto;
+  border-color: black;
+}
+
+.bitcoinFont {
+  font-family: 'Ubuntu', sans-serif;
 }

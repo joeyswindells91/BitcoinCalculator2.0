@@ -13,6 +13,8 @@
   <!-- font links-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <!-- Stylesheet -->
@@ -27,61 +29,60 @@
 <body>
 
 
-  <div class="container text-light bg-primary top">
-    <div class="row text-center title">
-      <h1 class="display-3">Bitcoin Compound Return Calculator</h1>
-      <!-- <div class="text-center">
-        <button class="btn btn-primary btn-block">Bitcoin Current Price</button>
-      </div> -->
-      <h2 id="btcPrice"></h2>
+  <div class="container text-light bg-warning top">
+    <div class="row border border-dark text-center title">
+      <h1 class="display-3 text-dark bitcoinFont">Bitcoin Compound Return Calculator</h1>
+      <img id="bitcoin-rocket" class="border-right" src="images/BitcoinRocket.png" alt="">
+      <h2 id="btcPrice" class="text-dark bitcoinFont"></h2>
       <!-- <h1 id="currencyDesc"></h1> -->
     </div>
   </div>
 
   <div>
-    <a type="button" id="how-to-use" class="btn btn-sm btn-primary text-light text-center mt-3" data-bs-toggle="modal" data-bs-target="#Modal">
+    <a type="button" id="how-to-use" class="btn btn-outline-dark btn-sm btn-warning text-dark text-center mt-3" data-bs-toggle="modal" data-bs-target="#Modal">
       How to use this calculator
     </a>
   </div>
 
     <!--How to use calculator Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">How to use this calculator</h5>
+        <h5 class="modal-title" id="exampleModalLabel" class="bitcoinFont">How to use this calculator</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>THIS IS HOW YOU USE IT</p>
+        <p>Use This Calculor</p>
+        <p>no this</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark bitcoinFont" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Calculate Bitcoin Annual Return</h5>
+        <h5 class="modal-title bitcoinFont" id="exampleModalLabel">Calculate Bitcoin Annual Return</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
               <p>Bitcoin Current Price ($): <input type="number" id="interest-current-price"></p>
-              <p> Bitcoin Future Price Prediction ($): <input type="number" id="interest-future-price" class="mt-2"></p>
-              <p>Year Of Future Price <input type="number" id="interest-year" min="2022" value="2022" class="mt-2"></p>
-              <button id="interest-calculate" class="btn btn-primary text-light mt-2">Calculate Annual Return</button>
+              <p> Bitcoin Future Price Prediction ($): <input type="number" id="interest-future-price" class="mt-2 "></p>
+              <p>Year Of Future Price <input type="number" id="interest-year" min="2022" value="2022" class="mt-2 "></p>
+              <button id="interest-calculate" class="btn btn-warning text-dark mt-2 bitcoinFont">Calculate Annual Return</button>
               <p id="final-result" class="mt-2"></p>
-              <button id="interest-copy" class="btn btn-primary text-light mt-2 copy">Copy Return Rate to Calculator</button>
+              <button id="interest-copy" class="btn btn-warning text-dark mt-2 copy bitcoinFont">Copy Return Rate to Calculator</button>
               <br>
-              <button id="years-copy" class="btn btn-primary text-light mt-2 copy">Copy Timeframe to Calculator</button>
+              <button id="years-copy" class="btn btn-warning text-dark mt-2 copy bitcoinFont">Copy Timeframe to Calculator</button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning text-dark bitcoinFont" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -99,14 +100,15 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Bitcoin</button>
+        <button class="btn btn-outline-dark btn-warning text-dark mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Bitcoin</button>
         <div class="col">
           <div class="collapse multi-collapse show" id="multiCollapseExample1">
             <div class="card card-body">
-              <h4>Current Market Value ($) <input type="number" class="current w-25"></h4>
-              <h4>Monthly Contribution ($) <input type="number" class="monthly-contribution w-25"></h4>
-              <h4>Expected Annual Return (%) <input type="number" id="bitcoin-expected-interest" class="interest w-25"></h4>
-              <button type="button" id="bitcoin-help" class="btn btn-sm btn-primary text-light text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <input type="text" name="currency-field" id="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00">
+              <h4 class="">Current Market Value ($) <input type="number" data-type="currency" class="current w-25"></h4>
+              <h4 class="">Monthly Contribution ($) <input type="number" class="monthly-contribution w-25"></h4>
+              <h4 class="">Expected Annual Return (%) <input type="number" id="bitcoin-expected-interest" class="interest w-25"></h4>
+              <button type="button" id="bitcoin-help" class="btn btn-outline-dark btn-sm btn-warning text-dark text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Calculate Annual Return
               </button>
             </div>
@@ -118,7 +120,7 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Equities</button>
+        <button class="btn btn-outline-dark btn-warning text-dark mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Equities</button>
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample2">
             <div class="card card-body">
@@ -133,7 +135,7 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Fixed Income</button>
+        <button class="btn btn-outline-dark btn-warning text-dark mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">Fixed Income</button>
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample3">
             <div class="card card-body">
@@ -148,7 +150,7 @@
 
     <div class="row">
       <div class="col">
-        <button class="btn btn-primary mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Fiat Cash</button>
+        <button class="btn btn-outline-dark btn-warning text-dark mb-3 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4" aria-expanded="false" aria-controls="multiCollapseExample4">Fiat Cash</button>
         <div class="col">
           <div class="collapse multi-collapse" id="multiCollapseExample4">
             <div class="card card-body">
@@ -170,8 +172,8 @@
 
     <div class="row mt-3">
       <div class="col">
-        <button id="calculate" class="btn btn-dark">Calculate</button>
-        <button type="button" class="reset btn btn-light text-dark">Reset</button>
+        <button id="calculate" class="btn btn-dark bitcoinFont">Calculate</button>
+        <button type="button" class="reset btn btn-light text-dark bitcoinFont">Reset</button>
       </div>
     </div>
 <div id="result-section" class="hidden">
