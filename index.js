@@ -4,9 +4,15 @@
 var currentValues = $(".current");
 var currentContributions = $(".monthly-contribution");
 var interest = $(".interest");
+var inflation = $("#inflation-rate");
 var total = 0;
 var currentBitcoinPrice = 0;
 var futureBitcoinPrice = 0;
+var futureBitcoinValue = 0;
+var futureEquitiesValue = 0;
+var futureFixedIncomeValue = 0;
+var futureFiatValue = 0;
+
 
 // chart
 var myChart = $("#myChart")[0].getContext("2d");
@@ -115,7 +121,7 @@ $("#calculate").click(function() {
     // total = total + isNumber(parseInt(currentValues[i].value));
     var principal = isNumber(parseFloat(ConvertToNumber(currentValues[i].value)));
     var monthlycont = isNumber(parseFloat(ConvertToNumber(currentContributions[i].value)));
-    var returnrate = isNumber(parseFloat(interest[i].value) * .01);
+    var returnrate = isNumber(parseFloat(interest[i].value) * .01) - isNumber(parseFloat(inflation.val() * .01));
     var timeframe = isNumber(parseFloat($("#input-years").val()));
 
     // massPopChart.data.datasets.data.push(100);
@@ -123,6 +129,20 @@ $("#calculate").click(function() {
 
     if (i === 0) {
       futureBitcoinPrice = parseFloat(compoundCalculation(currentBitcoinPrice, 0, returnrate, timeframe));
+      futureBitcoinValue = parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
+    }
+
+    if (i === 1) {
+
+      futureEquitiesValue = parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
+    }
+
+    if (i === 2) {
+      futureFixedIncomeValue = parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
+    }
+
+    if (i === 3) {
+      futureFiatValue = parseFloat(compoundCalculation(principal, monthlycont, returnrate, timeframe));
     }
 
     //
@@ -146,7 +166,7 @@ $("#calculate").click(function() {
       var returnrate = isNumber(parseFloat(interest[x].value) * .01);
 
       // send each asset class through compoundcalculator using the year number
-      // add the value of each asset class after jye ars to value
+      // add the value of each asset class after years to value
       value = value + parseFloat(compoundCalculation(principal, monthlycont, returnrate, j));
 
     }
@@ -172,6 +192,15 @@ $("#calculate").click(function() {
   }
 
   $("#bitcoin-price").html("Bitcoin price : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinPrice));
+
+  $("#bitcoin-value").html("Your Bitcoin Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinValue));
+
+  $("#equities-value").html("Your Equities Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureEquitiesValue));
+
+  $("#fixedincome-value").html("Your Fixed Income Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFixedIncomeValue));
+
+  $("#fiat-value").html("Your Fiat Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
+
 
   for (var i = 0; i <= timeframe; i++) {
     massPopChart.data.labels.push(2021 + i);
@@ -407,3 +436,11 @@ input[0].setSelectionRange(caret_pos, caret_pos);
 // ADD IN BITCOIN JOKES WHEN USERS CLICK ON EQUITIES/BONDS/CASH/SHITCOINS
 // ADD IN ABILITY TO TYPE IN AMOUNT OF BITCOIN OWNED
 // *******************
+
+$(".bitcoin-amount").change(function () {
+  $(".bitcoin-current").val(function () {
+    var result = $(".bitcoin-amount").val() * currentBitcoinPrice;
+
+    return result;
+  })
+})

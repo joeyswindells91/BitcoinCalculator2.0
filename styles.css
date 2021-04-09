@@ -40,7 +40,7 @@ div {
 }
 
 #bitcoin-help {
-  width: 10rem;
+  width: 20rem;
   margin: 2% auto;
 }
 
@@ -66,3 +66,8 @@ div {
 .monthly-contribution {
   width: 10rem;
 }
+
+.bitcoin-amount {
+  width: 10rem;
+}
+
