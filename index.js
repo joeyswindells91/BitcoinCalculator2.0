@@ -184,22 +184,27 @@ $("#calculate").click(function() {
   var futuretotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(total);
 
   if (timeframe === 1) {
-    $(".result").html("In " + timeframe + " year, you will have " + futuretotal + "!");
+    $(".result").html("In " + timeframe + " year, you will have " + futuretotal + " Fiat Dollars");
   }
 
   else {
-    $(".result").html("In " + timeframe + " years, you will have " + futuretotal + "!");
+    $(".result").html("In " + timeframe + " years, you will have " + futuretotal + " Fiat Dollars");
   }
 
   $("#bitcoin-price").html("Bitcoin price : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinPrice));
 
-  $("#bitcoin-value").html("Your Bitcoin Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinValue));
+  // var futuredollarvalue = ConvertToNumber($(".result").html());
+  var futureBitcoin = ConvertToNumber($("#bitcoin-price").html());
 
-  $("#equities-value").html("Your Equities Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureEquitiesValue));
+  $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
 
-  $("#fixedincome-value").html("Your Fixed Income Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFixedIncomeValue));
+  $("#bitcoin-value").html("Bitcoin : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinValue));
 
-  $("#fiat-value").html("Your Fiat Value : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
+  $("#equities-value").html("Equities : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureEquitiesValue));
+
+  $("#fixedincome-value").html("Fixed Income : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFixedIncomeValue));
+
+  $("#fiat-value").html("US Dollar : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
 
 
   for (var i = 0; i <= timeframe; i++) {
