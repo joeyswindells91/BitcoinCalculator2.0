@@ -4,7 +4,7 @@
 var currentValues = $(".current");
 var currentContributions = $(".monthly-contribution");
 var interest = $(".interest");
-var inflation = $("#inflation-rate");
+// var inflation = $("#inflation-rate");
 var total = 0;
 var currentBitcoinPrice = 0;
 var futureBitcoinPrice = 0;
@@ -121,7 +121,7 @@ $("#calculate").click(function() {
     // total = total + isNumber(parseInt(currentValues[i].value));
     var principal = isNumber(parseFloat(ConvertToNumber(currentValues[i].value)));
     var monthlycont = isNumber(parseFloat(ConvertToNumber(currentContributions[i].value)));
-    var returnrate = isNumber(parseFloat(interest[i].value) * .01) - isNumber(parseFloat(inflation.val() * .01));
+    var returnrate = isNumber(parseFloat(interest[i].value) * .01);
     var timeframe = isNumber(parseFloat($("#input-years").val()));
 
     // massPopChart.data.datasets.data.push(100);
@@ -348,10 +348,10 @@ $(".reset").click(function() {
 $("input[data-type='currency']").on({
   keyup: function() {
     formatCurrency($(this));
+  },
+  blur: function() {
+    formatCurrency($(this), "blur");
   }
-  // blur: function() {
-  //   formatCurrency($(this), "blur");
-  // }
 });
 
 
@@ -443,4 +443,15 @@ $(".bitcoin-amount").change(function () {
 
     return result;
   })
+})
+
+$(".current").change(function () {
+
+  var currentValue = 0;
+
+  for (var i = 0; i < currentValues.length; i++) {
+    currentValue = currentValue + ConvertToNumber(currentValues[i].value);
+  }
+
+  $("#value-in-bitcoin").html(((currentValue/currentBitcoinPrice).toFixed(8)) + " Bitcoins");
 })
