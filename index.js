@@ -450,13 +450,13 @@ $(".bitcoin-amount").change(function () {
   })
 })
 
-$(".current").change(function () {
+// $(".current").change(function () {
 
-  var currentValue = 0;
+//   var currentValue = 0;
 
-  for (var i = 0; i < currentValues.length; i++) {
-    currentValue = currentValue + ConvertToNumber(currentValues[i].value);
-  }
+//   for (var i = 0; i < currentValues.length; i++) {
+//     currentValue = currentValue + ConvertToNumber(currentValues[i].value);
+//   }
 
   // $("#value-in-bitcoin").html(((currentValue/currentBitcoinPrice).toFixed(8)) + " Bitcoins");
 })
