@@ -196,7 +196,7 @@ $("#calculate").click(function() {
   // var futuredollarvalue = ConvertToNumber($(".result").html());
   var futureBitcoin = ConvertToNumber($("#bitcoin-price").html());
 
-  $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
+  // $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
 
   $("#bitcoin-value").html("Bitcoin : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinValue));
 
@@ -458,5 +458,5 @@ $(".current").change(function () {
     currentValue = currentValue + ConvertToNumber(currentValues[i].value);
   }
 
-  $("#value-in-bitcoin").html(((currentValue/currentBitcoinPrice).toFixed(8)) + " Bitcoins");
+  // $("#value-in-bitcoin").html(((currentValue/currentBitcoinPrice).toFixed(8)) + " Bitcoins");
 })
