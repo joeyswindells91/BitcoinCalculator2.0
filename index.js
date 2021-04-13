@@ -196,7 +196,7 @@ $("#calculate").click(function() {
   // var futuredollarvalue = ConvertToNumber($(".result").html());
   var futureBitcoin = ConvertToNumber($("#bitcoin-price").html());
 
-  // $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
+  $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
 
   $("#bitcoin-value").html("Bitcoin : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinValue));
 
@@ -204,7 +204,7 @@ $("#calculate").click(function() {
 
   $("#fixedincome-value").html("Fixed Income : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFixedIncomeValue));
 
-  $("#fiat-value").html("US Dollar : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
+  $("#fiat-value").html("US Dollars : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
 
 
   for (var i = 0; i <= timeframe; i++) {
@@ -450,13 +450,13 @@ $(".bitcoin-amount").change(function () {
   })
 })
 
-// $(".current").change(function () {
+$(".current").change(function () {
 
-//   var currentValue = 0;
+  var currentValue = 0;
 
-//   for (var i = 0; i < currentValues.length; i++) {
-//     currentValue = currentValue + ConvertToNumber(currentValues[i].value);
-//   }
+  for (var i = 0; i < currentValues.length; i++) {
+    currentValue = currentValue + ConvertToNumber(currentValues[i].value);
+  }
 
   // $("#value-in-bitcoin").html(((currentValue/currentBitcoinPrice).toFixed(8)) + " Bitcoins");
 })
