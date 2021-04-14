@@ -364,88 +364,88 @@ $(".reset").click(function() {
 
 // Input Field Script
 
-$("input[data-type='currency']").on({
-  keyup: function() {
-    formatCurrency($(this));
-  },
-  blur: function() {
-    formatCurrency($(this), "blur");
-  }
-});
+// $("input[data-type='currency']").on({
+//   keyup: function() {
+//     formatCurrency($(this));
+//   },
+//   blur: function() {
+//     formatCurrency($(this), "blur");
+//   }
+// });
 
 
-function formatNumber(n) {
-// format number 1000000 to 1,234,567
-return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-}
+// function formatNumber(n) {
+// // format number 1000000 to 1,234,567
+// return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+// }
 
 
-function formatCurrency(input, blur) {
-// appends $ to value, validates decimal side
-// and puts cursor back in right position.
+// function formatCurrency(input, blur) {
+// // appends $ to value, validates decimal side
+// // and puts cursor back in right position.
 
-// get input value
-var input_val = input.val();
+// // get input value
+// var input_val = input.val();
 
-// don't validate empty input
-if (input_val === "") { return; }
+// // don't validate empty input
+// if (input_val === "") { return; }
 
-// original length
-var original_len = input_val.length;
+// // original length
+// var original_len = input_val.length;
 
-// initial caret position
-var caret_pos = input.prop("selectionStart");
+// // initial caret position
+// var caret_pos = input.prop("selectionStart");
 
-// check for decimal
-if (input_val.indexOf(".") >= 0) {
+// // check for decimal
+// if (input_val.indexOf(".") >= 0) {
 
-  // get position of first decimal
-  // this prevents multiple decimals from
-  // being entered
-  var decimal_pos = input_val.indexOf(".");
+//   // get position of first decimal
+//   // this prevents multiple decimals from
+//   // being entered
+//   var decimal_pos = input_val.indexOf(".");
 
-  // split number by decimal point
-  var left_side = input_val.substring(0, decimal_pos);
-  var right_side = input_val.substring(decimal_pos);
+//   // split number by decimal point
+//   var left_side = input_val.substring(0, decimal_pos);
+//   var right_side = input_val.substring(decimal_pos);
 
-  // add commas to left side of number
-  left_side = formatNumber(left_side);
+//   // add commas to left side of number
+//   left_side = formatNumber(left_side);
 
-  // validate right side
-  right_side = formatNumber(right_side);
+//   // validate right side
+//   right_side = formatNumber(right_side);
 
-  // On blur make sure 2 numbers after decimal
-  if (blur === "blur") {
-    right_side += "00";
-  }
+//   // On blur make sure 2 numbers after decimal
+//   if (blur === "blur") {
+//     right_side += "00";
+//   }
 
-  // Limit decimal to only 2 digits
-  right_side = right_side.substring(0, 2);
+//   // Limit decimal to only 2 digits
+//   right_side = right_side.substring(0, 2);
 
-  // join number by .
-  input_val = "$" + left_side + "." + right_side;
+//   // join number by .
+//   input_val = "$" + left_side + "." + right_side;
 
-} else {
-  // no decimal entered
-  // add commas to number
-  // remove all non-digits
-  input_val = formatNumber(input_val);
-  input_val = "$" + input_val;
+// } else {
+//   // no decimal entered
+//   // add commas to number
+//   // remove all non-digits
+//   input_val = formatNumber(input_val);
+//   input_val = "$" + input_val;
 
-  // final formatting
-  if (blur === "blur") {
-    input_val += ".00";
-  }
-}
+//   // final formatting
+//   if (blur === "blur") {
+//     input_val += ".00";
+//   }
+// }
 
-// send updated string to input
-input.val(input_val);
+// // send updated string to input
+// input.val(input_val);
 
-// put caret back in the right position
-var updated_len = input_val.length;
-caret_pos = updated_len - original_len + caret_pos;
-input[0].setSelectionRange(caret_pos, caret_pos);
-}
+// // put caret back in the right position
+// var updated_len = input_val.length;
+// caret_pos = updated_len - original_len + caret_pos;
+// input[0].setSelectionRange(caret_pos, caret_pos);
+// }
 
 // ********************************************************
 
@@ -478,35 +478,6 @@ $(".current").change(function () {
 
 // Tip Bitcoin Wallet Address code
 
-// function myFunction() {
-//   /* Get the text field */
-//   var copyText = document.getElementById("wallet-address");
-
-//   /* Select the text field */
-//   copyText.select();
-//   copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-//   /* Copy the text inside the text field */
-//   document.execCommand("copy");
-
-//   /* Alert the copied text */
-//   alert("Copied the text: " + copyText.value);
-// }
-
-// $("#copy-button").click(function() {
-//     /* Get the text field */
-//     var copyText = $("#wallet-address").html();
-
-//     /* Select the text field */
-//     copyText.select();
-//     copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-//     /* Copy the text inside the text field */
-//     document.execCommand("copy");
-
-//     /* Alert the copied text */
-//     alert("Copied BTC Wallet Address: " + copyText);
-// });
 
 function copyToClipboard(element) {
   var $temp = $("<input>");
@@ -515,3 +486,20 @@ function copyToClipboard(element) {
   document.execCommand("copy");
   $temp.remove();
 }
+
+
+
+
+
+
+// Create USD currency formatter.
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
+// Use it.
+
+var amount = $(".current").val();
+// var amount = document.getElementById('input').innerHTML;
+document.getElementById('result').innerHTML = formatter.format(amount);
