@@ -74,3 +74,7 @@ div {
 #bitcoin-price {
   margin-top: 4rem;
 }
+
+.modal-body {
+  text-align: left;
+}

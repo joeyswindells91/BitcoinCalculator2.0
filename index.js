@@ -15,32 +15,32 @@ var futureFiatValue = 0;
 
 
 // chart
-var myChart = $("#myChart")[0].getContext("2d");
-var massPopChart = new Chart(myChart, {
-  type:'line',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
-  data: {
-    labels: [],
-    // labels:["2022", "2023", "2024", "2025", "2026", "2027"],
-    datasets: [{
-      label: 'Future Value',
-      data: [],
-      // backgroundColor: "green"
-      backgroundColor: [
-        "orange"
-      ],
-      borderWidth:1,
-      borderColor:"orange",
-      hoverBorderWidth: 3,
-      hoverBorderColor: "black"
-    }]
-  },
-  options:{
-    title:{
-      display:true,
-      text:"Year By Year Future Value"
-    }
-  }
-});
+// var myChart = $("#myChart")[0].getContext("2d");
+// var massPopChart = new Chart(myChart, {
+//   type:'line',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+//   data: {
+//     labels: [],
+//     // labels:["2022", "2023", "2024", "2025", "2026", "2027"],
+//     datasets: [{
+//       label: 'Future Value',
+//       data: [],
+//       // backgroundColor: "green"
+//       backgroundColor: [
+//         "orange"
+//       ],
+//       borderWidth:1,
+//       borderColor:"orange",
+//       hoverBorderWidth: 3,
+//       hoverBorderColor: "black"
+//     }]
+//   },
+//   options:{
+//     title:{
+//       display:true,
+//       text:"Year By Year Future Value"
+//     }
+//   }
+// });
 
 //  massPopChart.data.datasets[0].data.push(100);
 
@@ -108,9 +108,9 @@ $("#calculate").click(function() {
   $("#result-section").removeClass("hidden");
 
   total = 0;
-  massPopChart.data.labels = [];
+  // massPopChart.data.labels = [];
 
-  massPopChart.data.datasets[0].data = [];
+  // massPopChart.data.datasets[0].data = [];
 
   var time = isNumber(parseFloat($("#input-years").val()));
 
@@ -151,7 +151,8 @@ $("#calculate").click(function() {
 
   }
 
-  massPopChart.data.datasets[0].data.push(yearzero);
+  // massPopChart.data.datasets[0].data.push(yearzero);
+
   // for each year
   for (var j = 1; j <= time; j++) {
 
@@ -173,7 +174,8 @@ $("#calculate").click(function() {
 
 
     // push value to y axis
-    massPopChart.data.datasets[0].data.push(value.toFixed(2));
+
+    // massPopChart.data.datasets[0].data.push(value.toFixed(2));
 
     // reset value back to zero for next iteration
     value = 0;
@@ -207,11 +209,11 @@ $("#calculate").click(function() {
   $("#fiat-value").html("US Dollars : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
 
 
-  for (var i = 0; i <= timeframe; i++) {
-    massPopChart.data.labels.push(2021 + i);
+  // for (var i = 0; i <= timeframe; i++) {
+  //   massPopChart.data.labels.push(2021 + i);
 
-    // massPopChart.data.datasets[0].data.push(100);
-  }
+  //   // massPopChart.data.datasets[0].data.push(100);
+  // }
 
 
 }
