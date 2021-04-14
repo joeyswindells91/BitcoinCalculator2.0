@@ -491,8 +491,8 @@ function copyToClipboard(element) {
 
 
 
-
-// Create USD currency formatter.
+$(".current").change(function () {
+  // Create USD currency formatter.
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -500,6 +500,7 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 // Use it.
 
-var amount = $(".current").val();
+var amount = ConvertToNumber($(this).val());
 // var amount = document.getElementById('input').innerHTML;
-document.getElementById('result').innerHTML = formatter.format(amount);
+$(this).val(formatter.format(amount));
+})
