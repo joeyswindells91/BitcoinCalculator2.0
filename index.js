@@ -213,11 +213,11 @@ $("#calculate").click(function() {
   // $(".future-bitcoin-amount").html((futureBitcoinValue/futureBitcoinPrice).toFixed(8));
 
   if (timeframe === 1) {
-    $(".future-bitcoin-amount").html("In " + timeframe + " year, you will have " + (futureBitcoinValue/futureBitcoinPrice).toFixed(8) + " Bitcoin");
+    $(".future-bitcoin-amount").html("In " + timeframe + " year, you will have " + (isNumber(futureBitcoinValue/futureBitcoinPrice)).toFixed(8) + " Bitcoin");
   }
 
   else {
-    $(".future-bitcoin-amount").html("In " + timeframe + " years, you will have " + (futureBitcoinValue/futureBitcoinPrice).toFixed(8) + " Bitcoin");
+    $(".future-bitcoin-amount").html("In " + timeframe + " years, you will have " + (isNumber(futureBitcoinValue/futureBitcoinPrice)).toFixed(8) + " Bitcoin");
   }
 
 
@@ -474,3 +474,44 @@ $(".current").change(function () {
 
   // $("#value-in-bitcoin").html(((currentValue/currentBitcoinPrice).toFixed(8)) + " Bitcoins");
 })
+
+
+// Tip Bitcoin Wallet Address code
+
+// function myFunction() {
+//   /* Get the text field */
+//   var copyText = document.getElementById("wallet-address");
+
+//   /* Select the text field */
+//   copyText.select();
+//   copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+//   /* Copy the text inside the text field */
+//   document.execCommand("copy");
+
+//   /* Alert the copied text */
+//   alert("Copied the text: " + copyText.value);
+// }
+
+// $("#copy-button").click(function() {
+//     /* Get the text field */
+//     var copyText = $("#wallet-address").html();
+
+//     /* Select the text field */
+//     copyText.select();
+//     copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+//     /* Copy the text inside the text field */
+//     document.execCommand("copy");
+
+//     /* Alert the copied text */
+//     alert("Copied BTC Wallet Address: " + copyText);
+// });
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
