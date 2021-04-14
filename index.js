@@ -198,7 +198,9 @@ $("#calculate").click(function() {
   // var futuredollarvalue = ConvertToNumber($(".result").html());
   var futureBitcoin = ConvertToNumber($("#bitcoin-price").html());
 
-  $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
+  // $("#future-value-in-bitcoin").html(((ConvertToNumber(futuretotal)/futureBitcoin).toFixed(8)) + " Bitcoins");
+
+
 
   $("#bitcoin-value").html("Bitcoin : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinValue));
 
@@ -207,6 +209,16 @@ $("#calculate").click(function() {
   $("#fixedincome-value").html("Fixed Income : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFixedIncomeValue));
 
   $("#fiat-value").html("US Dollars : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureFiatValue));
+
+  // $(".future-bitcoin-amount").html((futureBitcoinValue/futureBitcoinPrice).toFixed(8));
+
+  if (timeframe === 1) {
+    $(".future-bitcoin-amount").html("In " + timeframe + " year, you will have " + (futureBitcoinValue/futureBitcoinPrice).toFixed(8) + " Bitcoin");
+  }
+
+  else {
+    $(".future-bitcoin-amount").html("In " + timeframe + " years, you will have " + (futureBitcoinValue/futureBitcoinPrice).toFixed(8) + " Bitcoin");
+  }
 
 
   // for (var i = 0; i <= timeframe; i++) {
