@@ -503,4 +503,16 @@ var formatter = new Intl.NumberFormat('en-US', {
 var amount = ConvertToNumber($(this).val());
 // var amount = document.getElementById('input').innerHTML;
 $(this).val(formatter.format(amount));
-})
+});
+
+
+$(".bitcoin-amount").change(function () {
+// when the bitcoin amount changes
+
+// find the current dollar value of that value within bitcoin amount
+var amount = ConvertToNumber($(".bitcoin-amount").val()) * currentBitcoinPrice;
+// make amount equal to current dollar value of that amount of bitcoin
+
+$(".bitcoin-current").val(formatter.format(amount));
+//assign bitcoin-current to go through formatter function
+});
