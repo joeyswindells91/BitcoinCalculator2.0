@@ -295,7 +295,7 @@ $("#bitcoin-help").click(function () {
 
   // $(".current").attr("value", "0");
   // $(".monthly-contribution").attr("value", "0");
-  $(".interest").attr("value", "0");
+  $(".interest").attr("placeholder", "0");
 
 
 
@@ -515,4 +515,19 @@ var amount = ConvertToNumber($(".bitcoin-amount").val()) * currentBitcoinPrice;
 
 $(".bitcoin-current").val(formatter.format(amount));
 //assign bitcoin-current to go through formatter function
+});
+
+
+$(".monthly-contribution").change(function () {
+  // Create USD currency formatter.
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
+// Use it.
+
+var amount = ConvertToNumber($(this).val());
+// var amount = document.getElementById('input').innerHTML;
+$(this).val(formatter.format(amount));
 });
