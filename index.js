@@ -509,6 +509,10 @@ $(this).val(formatter.format(amount));
 $(".bitcoin-amount").change(function () {
 // when the bitcoin amount changes
 
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 // find the current dollar value of that value within bitcoin amount
 var amount = ConvertToNumber($(".bitcoin-amount").val()) * currentBitcoinPrice;
 // make amount equal to current dollar value of that amount of bitcoin
