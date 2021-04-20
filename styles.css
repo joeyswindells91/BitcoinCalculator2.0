@@ -55,7 +55,7 @@ div {
 }
 
 .bitcoinFont {
-  font-family: 'Ubuntu', 'Ubuntu Condensed', sans-serif;
+  font-family: 'Ubuntu', 'Lato', sans-serif;
 }
 
 
@@ -100,4 +100,8 @@ div {
   position: relative;
   top: 18px;
   left: 10px;
+}
+
+.begin {
+  text-decoration: underline;
 }

@@ -193,7 +193,7 @@ $("#calculate").click(function() {
     $(".result").html("In " + timeframe + " years, you will have " + futuretotal + " Fiat Dollars");
   }
 
-  $("#bitcoin-price").html("Bitcoin price : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinPrice));
+  $("#bitcoin-price").html("Bitcoin price in " + time + " year(s) : " + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(futureBitcoinPrice));
 
   // var futuredollarvalue = ConvertToNumber($(".result").html());
   var futureBitcoin = ConvertToNumber($("#bitcoin-price").html());
