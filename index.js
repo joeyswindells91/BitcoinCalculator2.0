@@ -252,7 +252,7 @@ function myFunction() {
         bitcoinprice = data.bpi.USD.rate_float;
         symbol = data.bpi[currSymbol].code;
         desc = data.bpi.USD.description;
-        btcPriceDisplay.innerText = "1 Bitcoin = $" + price;
+        btcPriceDisplay.innerText = " = $" + price;
 
         currentBitcoinPrice = isNumber(parseFloat(bitcoinprice));
 

@@ -11,7 +11,7 @@ div {
 
 #btcPrice {
   margin-top: 2%;
-  display: inline-block;
+  display: inline;
 }
 
 /*
@@ -55,7 +55,7 @@ div {
 }
 
 .bitcoinFont {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Ubuntu Condensed', sans-serif;
 }
 
 
@@ -86,4 +86,18 @@ div {
 .bottom {
   padding-top: 2rem;
   padding-bottom: 1rem;
+}
+
+
+.header img {
+  /* float: left; */
+  width: 80px;
+  height: 80px;
+  /* background: black; */
+}
+
+.header h2 {
+  position: relative;
+  top: 18px;
+  left: 10px;
 }
